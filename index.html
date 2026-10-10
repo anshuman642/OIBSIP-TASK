@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Anshuman | OASIS INFOBYTE Projects</title>
+    <title>OASIS INFOBYTE | My Projects</title>
 
     <style>
-        /* Reset */
         * {
             margin: 0;
             padding: 0;
@@ -16,14 +15,12 @@
         }
 
         :root {
-            --purple: #7651e8;
-            --purple-dark: #5935c5;
-            --light-purple: #f0ebff;
-            --background: #f8f7fc;
+            --purple: #7542f5;
+            --pink: #f32f91;
+            --blue: #0879f9;
+            --dark: #17143b;
+            --muted: #565a83;
             --white: #ffffff;
-            --text: #24213a;
-            --muted: #77758b;
-            --border: #e8e3f1;
         }
 
         html {
@@ -32,231 +29,302 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: var(--background);
-            color: var(--text);
+            color: var(--dark);
+            background:
+                radial-gradient(ellipse at 5% 10%, #f2ddff, transparent 38%),
+                radial-gradient(ellipse at 95% 80%, #d7edff, transparent 38%),
+                #f9f8ff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            padding: 45px 20px 25px;
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: clamp(32px, 5vw, 62px);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            color: #17143b;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #7738f5, #f02caa, #075ff5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .level-title {
+            display: inline-block;
+            margin: 22px 0 15px;
+            padding: 10px 45px;
+            border-radius: 50px;
+            color: white;
+            font-size: clamp(21px, 3vw, 30px);
+            background: linear-gradient(90deg, #6758fa, #c03de9);
+            box-shadow: 0 8px 22px #9b6aff45;
+        }
+
+        .intro {
+            max-width: 850px;
+            margin: 0 auto;
+            color: #4e5684;
+            font-size: 17px;
             line-height: 1.7;
         }
 
-        /* Navigation */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid var(--border);
-        }
-
-        nav {
-            width: min(1100px, 90%);
-            margin: auto;
-            min-height: 75px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 23px;
-            font-weight: 800;
-            color: var(--purple);
-        }
-
-        .nav-link {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .nav-link:hover {
-            color: var(--purple);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 85px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #ffffff, #eee8ff);
-        }
-
-        .hero-label {
-            display: inline-block;
-            padding: 7px 15px;
-            border-radius: 30px;
-            background: var(--light-purple);
-            color: var(--purple-dark);
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .hero h1 {
-            margin: 20px 0 12px;
-            font-size: clamp(32px, 6vw, 52px);
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--purple);
-        }
-
-        .hero p {
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--muted);
-        }
-
-        /* Main Content */
-        main {
-            width: min(1000px, 90%);
-            margin: 60px auto;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .section-heading h2 {
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
-
-        .section-heading p {
-            color: var(--muted);
+        /* Project Grid */
+        .projects {
+            width: min(1250px, 92%);
+            margin: 30px auto 65px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
         }
 
         /* Project Cards */
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 22px;
-        }
-
         .project-card {
-            display: flex;
-            flex-direction: column;
-            padding: 25px;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 17px;
-            box-shadow: 0 8px 25px rgba(65, 45, 120, 0.05);
-            transition: transform 0.25s, box-shadow 0.25s;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px #39247b14;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 35px rgba(65, 45, 120, 0.12);
+            transform: translateY(-9px);
+            box-shadow: 0 22px 45px #39247b26;
         }
 
-        .project-icon {
-            width: 52px;
-            height: 52px;
+        .card-art {
+            min-height: 220px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 25px;
+            color: white;
+        }
+
+        .purple-art {
+            background: linear-gradient(135deg, #a47aff, #7542e9);
+        }
+
+        .pink-art {
+            background: linear-gradient(135deg, #ff9bc9, #ef438f);
+        }
+
+        .blue-art {
+            background: linear-gradient(135deg, #72d1ff, #0879e9);
+        }
+
+        .task-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 7px 16px;
+            border-radius: 25px;
+            background: #ffffff35;
+            border: 1px solid #ffffff50;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .illustration {
+            font-size: clamp(65px, 7vw, 100px);
+            margin-bottom: 8px;
+            filter: drop-shadow(0 10px 8px #00000022);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .illustration {
+            transform: scale(1.1) rotate(-3deg);
+        }
+
+        .art-caption {
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #ffffffed;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h2 {
+            font-size: clamp(18px, 2vw, 23px);
+            line-height: 1.35;
+            margin-bottom: 13px;
+        }
+
+        .purple-title {
+            color: #38217f;
+        }
+
+        .pink-title {
+            color: #8c164e;
+        }
+
+        .blue-title {
+            color: #0752a6;
+        }
+
+        .card-content p {
+            min-height: 80px;
+            margin-bottom: 22px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Gradient Buttons */
+        .project-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+            padding: 13px 16px 13px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 800;
+            transition: filter 0.2s ease;
+        }
+
+        .project-button:hover {
+            filter: brightness(1.08);
+        }
+
+        .purple-button {
+            background: linear-gradient(90deg, #773cf5, #6331dd);
+            box-shadow: 0 8px 20px #7542f533;
+        }
+
+        .pink-button {
+            background: linear-gradient(90deg, #ff328a, #db248b);
+            box-shadow: 0 8px 20px #f32f9133;
+        }
+
+        .blue-button {
+            background: linear-gradient(90deg, #0879f9, #0754e9);
+            box-shadow: 0 8px 20px #0879f933;
+        }
+
+        .arrow {
             display: grid;
             place-items: center;
-            margin-bottom: 18px;
-            border-radius: 13px;
-            background: var(--light-purple);
-            font-size: 26px;
-        }
-
-        .project-card h3 {
-            font-size: 19px;
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            color: var(--muted);
-            font-size: 14px;
-            margin-bottom: 22px;
-            flex-grow: 1;
-        }
-
-        .project-link {
-            display: inline-block;
-            padding: 10px 14px;
-            border-radius: 9px;
-            background: var(--purple);
-            color: var(--white);
-            text-align: center;
-            font-size: 13px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .project-link:hover {
-            background: var(--purple-dark);
-        }
-
-        /* Contact */
-        .contact {
-            margin-top: 70px;
-            padding: 45px 20px;
-            text-align: center;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-        }
-
-        .contact h2 {
-            margin-bottom: 10px;
-        }
-
-        .contact p {
-            color: var(--muted);
-            margin-bottom: 20px;
-        }
-
-        .contact a {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: white;
             color: var(--purple);
-            font-weight: bold;
+            font-size: 21px;
+        }
+
+        .pink-button .arrow {
+            color: var(--pink);
+        }
+
+        .blue-button .arrow {
+            color: var(--blue);
         }
 
         /* Footer */
         footer {
-            padding: 25px 15px;
+            position: relative;
+            padding: 45px 20px 28px;
             text-align: center;
-            background: var(--white);
-            border-top: 1px solid var(--border);
-            color: var(--muted);
-            font-size: 13px;
+            color: white;
+            background: linear-gradient(100deg, #8050f7, #6785ff, #52b8f5);
+            clip-path: polygon(
+                0 10%, 12% 25%, 27% 15%, 42% 10%,
+                58% 20%, 73% 15%, 88% 5%, 100% 12%,
+                100% 100%, 0 100%
+            );
         }
 
-        /* Responsive */
-        @media (max-width: 800px) {
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Tablet */
+        @media (max-width: 950px) {
             .projects {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
+
+            .card-content p {
+                min-height: 60px;
+            }
         }
 
-        @media (max-width: 550px) {
-            nav {
-                padding: 15px 0;
-                flex-wrap: wrap;
-                justify-content: center;
+        /* Mobile */
+        @media (max-width: 620px) {
+            header {
+                padding-top: 35px;
             }
 
-            .logo {
-                width: 100%;
-                text-align: center;
+            .main-title {
+                letter-spacing: -0.7px;
             }
 
-            .hero {
-                padding: 60px 18px;
+            .level-title {
+                padding: 10px 25px;
             }
 
-            main {
-                margin: 40px auto;
+            .intro {
+                font-size: 15px;
             }
 
             .projects {
+                width: 90%;
                 grid-template-columns: 1fr;
+                gap: 24px;
+                margin-top: 20px;
             }
 
-            .section-heading h2 {
-                font-size: 25px;
+            .card-art {
+                min-height: 200px;
+            }
+
+            .illustration {
+                font-size: 78px;
+            }
+
+            .card-content {
+                padding: 22px;
+            }
+
+            .card-content h2 {
+                font-size: 22px;
+            }
+
+            .card-content p {
+                min-height: 0;
+            }
+
+            footer {
+                padding-top: 55px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
             }
         }
     </style>
@@ -264,117 +332,109 @@
 
 <body>
 
-    <!-- Navigation -->
+    <!-- Page Header -->
     <header>
-        <nav>
-            <div class="logo">Anshuman<span>.</span></div>
+        <h1 class="main-title">
+            My <span class="gradient-text">OASIS INFOBYTE</span> Projects
+        </h1>
 
-            <a class="nav-link" href="#home">Home</a>
-            <a class="nav-link" href="#projects">Projects</a>
-            <a class="nav-link" href="#contact">Contact</a>
-        </nav>
+        <h2 class="level-title">Level 1 Tasks</h2>
+
+        <p class="intro">
+            Explore my web development projects completed during
+            the OASIS INFOBYTE Internship Program.
+        </p>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <span class="hero-label">OASIS INFOBYTE · WEB DEVELOPMENT</span>
+    <!-- Project Cards -->
+    <main class="projects">
 
-        <h1>My <span>Project Showcase</span></h1>
-
-        <p>
-            Welcome to my project collection! Explore the websites
-            I built while learning web development and improving
-            my programming skills.
-        </p>
-    </section>
-
-    <!-- Projects Section -->
-    <main>
-        <section id="projects">
-            <div class="section-heading">
-                <h2>My Level 1 Tasks</h2>
-                <p>Three projects, one learning journey.</p>
+        <!-- Task 1 -->
+        <article class="project-card">
+            <div class="card-art purple-art">
+                <span class="task-number">01</span>
+                <div class="illustration" aria-hidden="true">🎓</div>
+                <p class="art-caption">LEARN & GROW</p>
             </div>
 
-            <div class="projects">
+            <div class="card-content">
+                <h2 class="purple-title">
+                    Task 1 - SkillUp Landing Page
+                </h2>
 
-                <!-- Task 1 -->
-                <article class="project-card">
-                    <div class="project-icon">🎓</div>
+                <p>
+                    A responsive landing page for an online learning
+                    platform with modern UI/UX design.
+                </p>
 
-                    <h3>Task 1: SkillUp</h3>
-
-                    <p>
-                        A responsive landing page for an online
-                        learning platform, built with HTML5 and CSS3.
-                    </p>
-
-                    <a
-                        class="project-link"
-                        href="./Level1-Task1-SkillUp/">
-                        View Project →
-                    </a>
-                </article>
-
-                <!-- Task 2 -->
-                <article class="project-card">
-                    <div class="project-icon">💼</div>
-
-                    <h3>Task 2: Portfolio</h3>
-
-                    <p>
-                        A personal portfolio showcasing my education,
-                        technical skills and development projects.
-                    </p>
-
-                    <a
-                        class="project-link"
-                        href="./Level1-Task2-Portfolio/">
-                        View Project →
-                    </a>
-                </article>
-
-                <!-- Task 3 -->
-                <article class="project-card">
-                    <div class="project-icon">🌡️</div>
-
-                    <h3>Task 3: Temperature Converter</h3>
-
-                    <p>
-                        An interactive tool to convert Celsius,
-                        Fahrenheit and Kelvin using JavaScript.
-                    </p>
-
-                    <a
-                        class="project-link"
-                        href="./Level1-Task3-Temperature-Converter/">
-                        View Project →
-                    </a>
-                </article>
-
+                <a
+                    class="project-button purple-button"
+                    href="./Level1-Task1-SkillUp/">
+                    <span>View Project →</span>
+                    <span class="arrow" aria-hidden="true">➜</span>
+                </a>
             </div>
-        </section>
+        </article>
 
-        <!-- Contact Section -->
-        <section class="contact" id="contact">
-            <h2>Let's Connect!</h2>
+        <!-- Task 2 -->
+        <article class="project-card">
+            <div class="card-art pink-art">
+                <span class="task-number">02</span>
+                <div class="illustration" aria-hidden="true">💻</div>
+                <p class="art-caption">MY DIGITAL IDENTITY</p>
+            </div>
 
-            <p>
-                Interested in my projects or want to collaborate?
-                Feel free to reach out.
-            </p>
+            <div class="card-content">
+                <h2 class="pink-title">
+                    Task 2 - Personal Portfolio
+                </h2>
 
-            <a href="https://github.com/anshuman642"
-               target="_blank"
-               rel="noopener noreferrer">
-                Visit My GitHub ↗
-            </a>
-        </section>
+                <p>
+                    A personal portfolio showcasing my education,
+                    technical skills and development projects.
+                </p>
+
+                <a
+                    class="project-button pink-button"
+                    href="./Level1-Task2-Portfolio/">
+                    <span>View Project →</span>
+                    <span class="arrow" aria-hidden="true">➜</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Task 3 -->
+        <article class="project-card">
+            <div class="card-art blue-art">
+                <span class="task-number">03</span>
+                <div class="illustration" aria-hidden="true">🌡️</div>
+                <p class="art-caption">CONVERT WITH EASE</p>
+            </div>
+
+            <div class="card-content">
+                <h2 class="blue-title">
+                    Task 3 - Temperature Converter
+                </h2>
+
+                <p>
+                    An interactive tool to convert Celsius,
+                    Fahrenheit and Kelvin using JavaScript.
+                </p>
+
+                <a
+                    class="project-button blue-button"
+                    href="./Level1-Task3-Temperature-Converter/">
+                    <span>View Project →</span>
+                    <span class="arrow" aria-hidden="true">➜</span>
+                </a>
+            </div>
+        </article>
+
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Anshuman Namdev | Built with HTML & CSS</p>
+        <p>© 2026 Anshuman Namdev | OASIS INFOBYTE Projects</p>
     </footer>
 
 </body>
