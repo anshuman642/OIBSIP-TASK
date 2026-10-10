@@ -1,0 +1,128 @@
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --purple: #7651e8;
+    --purple-dark: #5935c5;
+    --light-purple: #f0ebff;
+    --background: #f8f7fc;
+    --white: #ffffff;
+    --text: #24213a;
+    --muted: #77758b;
+    --border: #e8e3f1;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.7;
+}
+
+/* Header */
+header {
+    background: var(--white);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    color: var(--purple);
+    margin-bottom: 8px;
+}
+
+header p {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* Main Content */
+main {
+    width: min(900px, 90%);
+    margin: 55px auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Project Cards */
+ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+li {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(65, 45, 120, 0.05);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+li:hover {
+    transform: translateY(-5px);
+    border-color: var(--purple);
+    box-shadow: 0 14px 30px rgba(65, 45, 120, 0.12);
+}
+
+/* Project Links */
+a {
+    color: var(--purple);
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--purple-dark);
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    margin-top: 60px;
+    padding: 25px 15px;
+    text-align: center;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    main {
+        margin: 35px auto;
+    }
+
+    ul {
+        grid-template-columns: 1fr;
+    }
+
+    li {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+}
