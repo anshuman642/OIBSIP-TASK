@@ -5,436 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>OASIS INFOBYTE | My Projects</title>
+    <title>Anshuman | OASIS INFOBYTE Projects</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <meta name="description"
+          content="Explore Anshuman Namdev's OASIS INFOBYTE web development projects.">
 
-        :root {
-            --purple: #7542f5;
-            --pink: #f32f91;
-            --blue: #0879f9;
-            --dark: #17143b;
-            --muted: #565a83;
-            --white: #ffffff;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--dark);
-            background:
-                radial-gradient(ellipse at 5% 10%, #f2ddff, transparent 38%),
-                radial-gradient(ellipse at 95% 80%, #d7edff, transparent 38%),
-                #f9f8ff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        header {
-            padding: 45px 20px 25px;
-            text-align: center;
-        }
-
-        .main-title {
-            font-size: clamp(32px, 5vw, 62px);
-            font-weight: 900;
-            line-height: 1.2;
-            letter-spacing: -1.5px;
-            color: #17143b;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #7738f5, #f02caa, #075ff5);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .level-title {
-            display: inline-block;
-            margin: 22px 0 15px;
-            padding: 10px 45px;
-            border-radius: 50px;
-            color: white;
-            font-size: clamp(21px, 3vw, 30px);
-            background: linear-gradient(90deg, #6758fa, #c03de9);
-            box-shadow: 0 8px 22px #9b6aff45;
-        }
-
-        .intro {
-            max-width: 850px;
-            margin: 0 auto;
-            color: #4e5684;
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
-        /* Project Grid */
-        .projects {
-            width: min(1250px, 92%);
-            margin: 30px auto 65px;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 25px;
-        }
-
-        /* Project Cards */
-        .project-card {
-            overflow: hidden;
-            background: white;
-            border: 1px solid #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px #39247b14;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-9px);
-            box-shadow: 0 22px 45px #39247b26;
-        }
-
-        .card-art {
-            min-height: 220px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 25px;
-            color: white;
-        }
-
-        .purple-art {
-            background: linear-gradient(135deg, #a47aff, #7542e9);
-        }
-
-        .pink-art {
-            background: linear-gradient(135deg, #ff9bc9, #ef438f);
-        }
-
-        .blue-art {
-            background: linear-gradient(135deg, #72d1ff, #0879e9);
-        }
-
-        .task-number {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 7px 16px;
-            border-radius: 25px;
-            background: #ffffff35;
-            border: 1px solid #ffffff50;
-            font-size: 16px;
-            font-weight: 800;
-        }
-
-        .illustration {
-            font-size: clamp(65px, 7vw, 100px);
-            margin-bottom: 8px;
-            filter: drop-shadow(0 10px 8px #00000022);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .illustration {
-            transform: scale(1.1) rotate(-3deg);
-        }
-
-        .art-caption {
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #ffffffed;
-        }
-
-        .card-content {
-            padding: 25px;
-        }
-
-        .card-content h2 {
-            font-size: clamp(18px, 2vw, 23px);
-            line-height: 1.35;
-            margin-bottom: 13px;
-        }
-
-        .purple-title {
-            color: #38217f;
-        }
-
-        .pink-title {
-            color: #8c164e;
-        }
-
-        .blue-title {
-            color: #0752a6;
-        }
-
-        .card-content p {
-            min-height: 80px;
-            margin-bottom: 22px;
-            color: var(--muted);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        /* Gradient Buttons */
-        .project-button {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            width: 100%;
-            padding: 13px 16px 13px 20px;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 800;
-            transition: filter 0.2s ease;
-        }
-
-        .project-button:hover {
-            filter: brightness(1.08);
-        }
-
-        .purple-button {
-            background: linear-gradient(90deg, #773cf5, #6331dd);
-            box-shadow: 0 8px 20px #7542f533;
-        }
-
-        .pink-button {
-            background: linear-gradient(90deg, #ff328a, #db248b);
-            box-shadow: 0 8px 20px #f32f9133;
-        }
-
-        .blue-button {
-            background: linear-gradient(90deg, #0879f9, #0754e9);
-            box-shadow: 0 8px 20px #0879f933;
-        }
-
-        .arrow {
-            display: grid;
-            place-items: center;
-            width: 34px;
-            height: 34px;
-            flex-shrink: 0;
-            border-radius: 50%;
-            background: white;
-            color: var(--purple);
-            font-size: 21px;
-        }
-
-        .pink-button .arrow {
-            color: var(--pink);
-        }
-
-        .blue-button .arrow {
-            color: var(--blue);
-        }
-
-        /* Footer */
-        footer {
-            position: relative;
-            padding: 45px 20px 28px;
-            text-align: center;
-            color: white;
-            background: linear-gradient(100deg, #8050f7, #6785ff, #52b8f5);
-            clip-path: polygon(
-                0 10%, 12% 25%, 27% 15%, 42% 10%,
-                58% 20%, 73% 15%, 88% 5%, 100% 12%,
-                100% 100%, 0 100%
-            );
-        }
-
-        footer p {
-            font-size: 14px;
-        }
-
-        /* Tablet */
-        @media (max-width: 950px) {
-            .projects {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .card-content p {
-                min-height: 60px;
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 620px) {
-            header {
-                padding-top: 35px;
-            }
-
-            .main-title {
-                letter-spacing: -0.7px;
-            }
-
-            .level-title {
-                padding: 10px 25px;
-            }
-
-            .intro {
-                font-size: 15px;
-            }
-
-            .projects {
-                width: 90%;
-                grid-template-columns: 1fr;
-                gap: 24px;
-                margin-top: 20px;
-            }
-
-            .card-art {
-                min-height: 200px;
-            }
-
-            .illustration {
-                font-size: 78px;
-            }
-
-            .card-content {
-                padding: 22px;
-            }
-
-            .card-content h2 {
-                font-size: 22px;
-            }
-
-            .card-content p {
-                min-height: 0;
-            }
-
-            footer {
-                padding-top: 55px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                transition: none !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Page Header -->
+    <!-- Header -->
     <header>
-        <h1 class="main-title">
-            My <span class="gradient-text">OASIS INFOBYTE</span> Projects
-        </h1>
-
-        <h2 class="level-title">Level 1 Tasks</h2>
-
-        <p class="intro">
-            Explore my web development projects completed during
-            the OASIS INFOBYTE Internship Program.
-        </p>
+        <h1>Anshuman Namdev</h1>
+        <p>OASIS INFOBYTE | Web Development Projects</p>
     </header>
 
-    <!-- Project Cards -->
-    <main class="projects">
+    <!-- Main Content -->
+    <main>
+        <section>
+            <h2>My Level 1 Projects</h2>
 
-        <!-- Task 1 -->
-        <article class="project-card">
-            <div class="card-art purple-art">
-                <span class="task-number">01</span>
-                <div class="illustration" aria-hidden="true">🎓</div>
-                <p class="art-caption">LEARN & GROW</p>
-            </div>
+            <ul>
+                <li>
+                    <h3>Task 1</h3>
+                    <p>SkillUp — Online Learning Landing Page</p>
+                    <a href="./Level1-Task1-SkillUp/">
+                        View Landing Page →
+                    </a>
+                </li>
 
-            <div class="card-content">
-                <h2 class="purple-title">
-                    Task 1 - SkillUp Landing Page
-                </h2>
+                <li>
+                    <h3>Task 2</h3>
+                    <p>Personal Portfolio Website</p>
+                    <a href="./Level1-Task2-Portfolio/">
+                        View Portfolio →
+                    </a>
+                </li>
 
-                <p>
-                    A responsive landing page for an online learning
-                    platform with modern UI/UX design.
-                </p>
-
-                <a
-                    class="project-button purple-button"
-                    href="./Level1-Task1-SkillUp/">
-                    <span>View Project →</span>
-                    <span class="arrow" aria-hidden="true">➜</span>
-                </a>
-            </div>
-        </article>
-
-        <!-- Task 2 -->
-        <article class="project-card">
-            <div class="card-art pink-art">
-                <span class="task-number">02</span>
-                <div class="illustration" aria-hidden="true">💻</div>
-                <p class="art-caption">MY DIGITAL IDENTITY</p>
-            </div>
-
-            <div class="card-content">
-                <h2 class="pink-title">
-                    Task 2 - Personal Portfolio
-                </h2>
-
-                <p>
-                    A personal portfolio showcasing my education,
-                    technical skills and development projects.
-                </p>
-
-                <a
-                    class="project-button pink-button"
-                    href="./Level1-Task2-Portfolio/">
-                    <span>View Project →</span>
-                    <span class="arrow" aria-hidden="true">➜</span>
-                </a>
-            </div>
-        </article>
-
-        <!-- Task 3 -->
-        <article class="project-card">
-            <div class="card-art blue-art">
-                <span class="task-number">03</span>
-                <div class="illustration" aria-hidden="true">🌡️</div>
-                <p class="art-caption">CONVERT WITH EASE</p>
-            </div>
-
-            <div class="card-content">
-                <h2 class="blue-title">
-                    Task 3 - Temperature Converter
-                </h2>
-
-                <p>
-                    An interactive tool to convert Celsius,
-                    Fahrenheit and Kelvin using JavaScript.
-                </p>
-
-                <a
-                    class="project-button blue-button"
-                    href="./Level1-Task3-Temperature-Converter/">
-                    <span>View Project →</span>
-                    <span class="arrow" aria-hidden="true">➜</span>
-                </a>
-            </div>
-        </article>
-
+                <li>
+                    <h3>Task 3</h3>
+                    <p>Temperature Converter Website</p>
+                    <a href="./Level1-Task3-Temperature-Converter/">
+                        Open Temperature Converter →
+                    </a>
+                </li>
+            </ul>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Anshuman Namdev | OASIS INFOBYTE Projects</p>
+        <p>
+            Built with HTML, CSS & JavaScript
+        </p>
+
+        <p>
+            © 2026 Anshuman Namdev | OASIS INFOBYTE
+        </p>
+
+        <a href="https://github.com/anshuman642/OIBSIP-TASK"
+           target="_blank"
+           rel="noopener noreferrer">
+            View GitHub Repository ↗
+        </a>
     </footer>
 
 </body>
