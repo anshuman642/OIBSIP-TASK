@@ -4,24 +4,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OASIS INFOBYTE Tasks</title>
+
+    <title>Anshuman | OASIS INFOBYTE Projects</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple: #7651e8;
+            --purple-dark: #5935c5;
+            --light-purple: #f0ebff;
+            --background: #f8f7fc;
+            --white: #ffffff;
+            --text: #24213a;
+            --muted: #77758b;
+            --border: #e8e3f1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            width: min(1100px, 90%);
+            margin: auto;
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            color: var(--purple);
+        }
+
+        .nav-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            color: var(--purple);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 85px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff, #eee8ff);
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 7px 15px;
+            border-radius: 30px;
+            background: var(--light-purple);
+            color: var(--purple-dark);
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            margin: 20px 0 12px;
+            font-size: clamp(32px, 6vw, 52px);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--purple);
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--muted);
+        }
+
+        /* Main Content */
+        main {
+            width: min(1000px, 90%);
+            margin: 60px auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        /* Project Cards */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            box-shadow: 0 8px 25px rgba(65, 45, 120, 0.05);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(65, 45, 120, 0.12);
+        }
+
+        .project-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 18px;
+            border-radius: 13px;
+            background: var(--light-purple);
+            font-size: 26px;
+        }
+
+        .project-card h3 {
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 22px;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 9px;
+            background: var(--purple);
+            color: var(--white);
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .project-link:hover {
+            background: var(--purple-dark);
+        }
+
+        /* Contact */
+        .contact {
+            margin-top: 70px;
+            padding: 45px 20px;
+            text-align: center;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .contact h2 {
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .contact a {
+            color: var(--purple);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            padding: 25px 15px;
+            text-align: center;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .projects {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 550px) {
+            nav {
+                padding: 15px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 60px 18px;
+            }
+
+            main {
+                margin: 40px auto;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>My OASIS INFOBYTE Projects</h1>
 
-    <h2>Level 1 Tasks</h2>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Anshuman<span>.</span></div>
 
-    <ul>
-        <li>
-            <a href="./Level1-Task1-SkillUp/">Task 1 - SkillUp Landing Page</a>
-        </li>
-        <li>
-            <a href="./Level1-Task2-Portfolio/">Task 2 - Personal Portfolio</a>
-        </li>
-        <li>
-            <a href="./Level1-Task3-Temperature-Converter/">Task 3 - Temperature Converter</a>
-        </li>
-    </ul>
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#projects">Projects</a>
+            <a class="nav-link" href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <span class="hero-label">OASIS INFOBYTE · WEB DEVELOPMENT</span>
+
+        <h1>My <span>Project Showcase</span></h1>
+
+        <p>
+            Welcome to my project collection! Explore the websites
+            I built while learning web development and improving
+            my programming skills.
+        </p>
+    </section>
+
+    <!-- Projects Section -->
+    <main>
+        <section id="projects">
+            <div class="section-heading">
+                <h2>My Level 1 Tasks</h2>
+                <p>Three projects, one learning journey.</p>
+            </div>
+
+            <div class="projects">
+
+                <!-- Task 1 -->
+                <article class="project-card">
+                    <div class="project-icon">🎓</div>
+
+                    <h3>Task 1: SkillUp</h3>
+
+                    <p>
+                        A responsive landing page for an online
+                        learning platform, built with HTML5 and CSS3.
+                    </p>
+
+                    <a
+                        class="project-link"
+                        href="./Level1-Task1-SkillUp/">
+                        View Project →
+                    </a>
+                </article>
+
+                <!-- Task 2 -->
+                <article class="project-card">
+                    <div class="project-icon">💼</div>
+
+                    <h3>Task 2: Portfolio</h3>
+
+                    <p>
+                        A personal portfolio showcasing my education,
+                        technical skills and development projects.
+                    </p>
+
+                    <a
+                        class="project-link"
+                        href="./Level1-Task2-Portfolio/">
+                        View Project →
+                    </a>
+                </article>
+
+                <!-- Task 3 -->
+                <article class="project-card">
+                    <div class="project-icon">🌡️</div>
+
+                    <h3>Task 3: Temperature Converter</h3>
+
+                    <p>
+                        An interactive tool to convert Celsius,
+                        Fahrenheit and Kelvin using JavaScript.
+                    </p>
+
+                    <a
+                        class="project-link"
+                        href="./Level1-Task3-Temperature-Converter/">
+                        View Project →
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2>Let's Connect!</h2>
+
+            <p>
+                Interested in my projects or want to collaborate?
+                Feel free to reach out.
+            </p>
+
+            <a href="https://github.com/anshuman642"
+               target="_blank"
+               rel="noopener noreferrer">
+                Visit My GitHub ↗
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Anshuman Namdev | Built with HTML & CSS</p>
+    </footer>
+
 </body>
 </html>
-    
